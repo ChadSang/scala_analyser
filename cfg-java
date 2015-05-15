@@ -1,0 +1,6 @@
+rm -r dot
+mvn clean package
+
+java -jar target/controlflow.jar -constructors -dir dot de.codesourcery.asm.TestClass
+dot -O -Tpng dot/testMethod__Z_V.dot
+eog dot/testMethod__Z_V.dot.png &

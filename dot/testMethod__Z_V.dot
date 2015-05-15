@@ -1,0 +1,28 @@
+digraph "testMethod()" {
+    END [shape=ellipse,label="testMethod_exit"]
+    "32_33_34_35" [shape=box,label="  35: RETURN\l"]
+    "10_11_12_13_14_15_16_17_18_19_20_21_22_23_24_25_26_27_28_29_30_31" [shape=box,label="  13: NEW de/codesourcery/asm/TestClass$Point\l  14: DUP\l  15: ALOAD_0\l  16: ICONST_1\l  17: ICONST_2\l  18: INVOKESPECIAL de/codesourcery/asm/TestClass$Point#<init>()\l  19: ASTORE_2\l  22: ALOAD_2\l  23: ICONST_3\l  24: ICONST_3\l  25: INVOKEVIRTUAL de/codesourcery/asm/TestClass$Point#move()\l  28: ALOAD_0\l  29: ICONST_3\l  30: ICONST_3\l  31: INVOKEVIRTUAL de/codesourcery/asm/TestClass#move()\l"]
+    START [shape=ellipse,label="testMethod_entry"]
+    "0_1_2_3" [shape=box,label="   2: ILOAD_1\l   3: IFEQ 13\l"]
+    "4_5_6_7_8_9" [shape=box,label="   6: GETSTATIC java/lang/System#out\l   7: LDC \"testMethod() called.\"\l   8: INVOKEVIRTUAL java/io/PrintStream#println()\l   9: GOTO 35\l"]
+    "32_33_34_35" -> END 
+    "10_11_12_13_14_15_16_17_18_19_20_21_22_23_24_25_26_27_28_29_30_31" -> "32_33_34_35" 
+    START -> "0_1_2_3" 
+    "0_1_2_3" -> "10_11_12_13_14_15_16_17_18_19_20_21_22_23_24_25_26_27_28_29_30_31" [label="true"]
+    "0_1_2_3" -> "4_5_6_7_8_9" [label="false"]
+    "4_5_6_7_8_9" -> "32_33_34_35" 
+    "0_START" [shape=ellipse,label="move_entry"]
+    "0_END" [shape=ellipse,label="move_exit"]
+    "0_0_1_2_3_4_5_6_7_8_9_10_11_12_13_14_15_16_17_18" [shape=box,label="   2: ALOAD_0\l   3: DUP\l   4: GETFIELD de/codesourcery/asm/TestClass$Point#x\l   5: ILOAD_1\l   6: IADD\l   7: PUTFIELD de/codesourcery/asm/TestClass$Point#x\l  10: ALOAD_0\l  11: DUP\l  12: GETFIELD de/codesourcery/asm/TestClass$Point#y\l  13: ILOAD_2\l  14: IADD\l  15: PUTFIELD de/codesourcery/asm/TestClass$Point#y\l  18: RETURN\l"]
+    "0_START" -> "0_0_1_2_3_4_5_6_7_8_9_10_11_12_13_14_15_16_17_18" 
+    "0_0_1_2_3_4_5_6_7_8_9_10_11_12_13_14_15_16_17_18" -> "0_END" 
+    "10_11_12_13_14_15_16_17_18_19_20_21_22_23_24_25_26_27_28_29_30_31" -> "0_START"
+    "0_END" -> "10_11_12_13_14_15_16_17_18_19_20_21_22_23_24_25_26_27_28_29_30_31"
+    "1_0_1_2_3_4_5_6_7" [shape=box,label="   2: GETSTATIC java/lang/System#out\l   3: LDC \"move() called.\"\l   4: INVOKEVIRTUAL java/io/PrintStream#println()\l   7: RETURN\l"]
+    "1_START" [shape=ellipse,label="move_entry"]
+    "1_END" [shape=ellipse,label="move_exit"]
+    "1_0_1_2_3_4_5_6_7" -> "1_END" 
+    "1_START" -> "1_0_1_2_3_4_5_6_7" 
+    "10_11_12_13_14_15_16_17_18_19_20_21_22_23_24_25_26_27_28_29_30_31" -> "1_START"
+    "1_END" -> "10_11_12_13_14_15_16_17_18_19_20_21_22_23_24_25_26_27_28_29_30_31"
+}

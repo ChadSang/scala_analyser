@@ -1,0 +1,7 @@
+digraph "init()" {
+    START [shape=ellipse,label="<init>_entry"]
+    END [shape=ellipse,label="<init>_exit"]
+    "0_1_2_3_4_5_6_7_8_9_10_11" [shape=box,label="   2: ALOAD_0\l   3: INVOKESPECIAL java/lang/Object#<init>()\l   6: GETSTATIC java/lang/System#out\l   7: LDC \"Testclass constructed.\"\l   8: INVOKEVIRTUAL java/io/PrintStream#println()\l  11: RETURN\l"]
+    START -> "0_1_2_3_4_5_6_7_8_9_10_11" 
+    "0_1_2_3_4_5_6_7_8_9_10_11" -> END 
+}

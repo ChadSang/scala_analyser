@@ -1,0 +1,7 @@
+digraph "move()" {
+    "0_1_2_3_4_5_6_7" [shape=box,label="   2: GETSTATIC java/lang/System#out\l   3: LDC \"move() called.\"\l   4: INVOKEVIRTUAL java/io/PrintStream#println()\l   7: RETURN\l"]
+    START [shape=ellipse,label="move_entry"]
+    END [shape=ellipse,label="move_exit"]
+    "0_1_2_3_4_5_6_7" -> END 
+    START -> "0_1_2_3_4_5_6_7" 
+}
