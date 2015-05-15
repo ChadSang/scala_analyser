@@ -1,0 +1,28 @@
+rm -r dot
+if [ $# -eq 1 ]
+then 
+scalac -d scala/ $1
+cp scala/*\$*.class target/classes/
+rm scala/*.class
+cd target/classes
+mv TestClass$.class TestClass.class
+zip -d ../controlflow.jar *.class
+jar uf ../controlflow.jar *.class
+cd ../../
+clear
+cat $1
+fi
+
+echo "2222222222222"
+#/usr/bin/time -f "time\t%E" java -jar target/controlflow.jar -constructors -dir dot TestClass
+java -jar target/controlflow.jar -constructors -dir dot TestClass
+echo "3333333333333"
+ellipse=$(grep ellipse dot/main__\[Ljava_lang_String_V.dot | wc -l)
+box=$(grep box dot/main__\[Ljava_lang_String_V.dot | wc -l)
+arrow=$(grep -- '->' dot/main__\[Ljava_lang_String_V.dot | wc -l)
+edge=$(expr $arrow - $ellipse)
+printf "block\t$box\n"
+printf "edge\t$edge\n"
+
+dot -O -Tpng dot/main__[Ljava_lang_String_V.dot
+eog dot/main__\[Ljava_lang_String_V.dot.png &
